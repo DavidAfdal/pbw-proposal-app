@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proposal;
 use Illuminate\Http\Request;
 
 class ProposalController extends Controller
@@ -42,6 +43,10 @@ class ProposalController extends Controller
             "bidangIlmu" => "required",
             "file" => "required",
             
+        ]);
+        Proposal::create([
+            "nidn" => $request->nidn,
+            "nama" => $request->nama,
         ]);
     }
 
