@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
 
         $data = Proposal::where('nidn_dosen', Auth::user()->nidn)->get();
-
+        
         return view("dosen.pages.home")->with('data', $data);
     }
 

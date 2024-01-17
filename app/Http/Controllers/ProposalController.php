@@ -37,7 +37,11 @@ class ProposalController extends Controller
         $request->validate([
             "nama" => "required",
             "judul" => "required",
+            "tanggal" => "required",
+            "skema" => "required",
+            "bidangIlmu" => "required",
             "file" => "required",
+
         ]);
     }
 

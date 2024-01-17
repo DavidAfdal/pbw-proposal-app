@@ -15,7 +15,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function regsiter()
+    public function register()
     {
         return view('auth.pages.register');
     }

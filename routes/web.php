@@ -20,7 +20,7 @@ Route::get('/tambah-proposal', [HomeController::class, "tambah"])->name("tambah"
 Route::get("/tambah-anggota", [HomeController::class, "tambahAnggota"])->name("tambahanggota");
 Route::get("/sukses", [HomeController::class, "succes"])->name("succes");
 
-Route::get("/register", [AuthController::class, "regsiter"])->name("register");
+Route::get("/register", [AuthController::class, "register"])->name("register");
 Route::post("/handle-register", [AuthController::class, "handleRegister"])->name("auth.post.register");
 Route::get("/", [AuthController::class, "login"])->name("login");
 Route::post("/login", [AuthController::class, "handleLogin"])->name("auth.post.login");

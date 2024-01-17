@@ -11,23 +11,21 @@
               <div class="box">
                 <form action="">
                   <label for="">Nama Peneliti</label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="nama" id="">
                   <label for="">Judul Peneliti</label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="judul" id="">
                   <label for="">Tanggal Pembuatan Proposal</label>
-                  <input type="date" name="" id="">
+                  <input type="date" name="tanggal" id="">
                   <label for="">Skema</label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="skema" id="">
                   <label for="">Topik</label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="topik" id="">
                   <label for="">Bidang Ilmu</label>
-                  <input type="text" name="" id="">
-                  <label for="">Uploud Proposal (PDF)</label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="bidangIlmu" id="">
+                  <label for="">Upload Proposal (PDF)</label>
+                  <input type="file" name="" id="file" accept="application/pdf,application/vnd.ms-excel">
                   <div class="d-flex justify-content-end">
-                    <button>
-                        Kirim Proposal
-                      </button>
+                    <input type="submit" value="Kirim Proposal">
                   </div>
 
                 </form>

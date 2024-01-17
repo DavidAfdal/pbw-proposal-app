@@ -31,6 +31,11 @@
               <button type="submit">
                 Masuk
               </button>
+              <a href="/register" style="text-decoration : none; color :white;">
+              <button type="button" style="width: 100%">
+                Daftar
+              </button>
+            </a>
                 </form>
 
               </div>
