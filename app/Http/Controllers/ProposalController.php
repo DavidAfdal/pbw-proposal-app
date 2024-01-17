@@ -32,7 +32,7 @@ class ProposalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function handleTambahProposal(Request $request)
     {
         $request->validate([
             "nama" => "required",
@@ -41,7 +41,7 @@ class ProposalController extends Controller
             "skema" => "required",
             "bidangIlmu" => "required",
             "file" => "required",
-
+            
         ]);
     }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProposalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/home', [HomeController::class, "home"])->name("home");
 Route::get('/tambah-proposal', [HomeController::class, "tambah"])->name("tambah");
+Route::post('/tambah-proposal', [ProposalController::class, "handleTambahProposal"])->name("proposal.tambah");
 Route::get("/tambah-anggota", [HomeController::class, "tambahAnggota"])->name("tambahanggota");
 Route::get("/sukses", [HomeController::class, "succes"])->name("succes");
 

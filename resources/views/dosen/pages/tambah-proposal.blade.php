@@ -11,7 +11,7 @@
               <div class="box">
                 <form action="">
                   <label for="">Nama Peneliti</label>
-                  <input type="text" name="nama" id="">
+                  <input type="text" name="nama" id="" required>
                   <label for="">Judul Peneliti</label>
                   <input type="text" name="judul" id="">
                   <label for="">Tanggal Pembuatan Proposal</label>
