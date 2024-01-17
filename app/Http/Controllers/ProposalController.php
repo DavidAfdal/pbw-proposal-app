@@ -44,8 +44,13 @@ class ProposalController extends Controller
             "file" => "required",
         ]);
         Proposal::create([
-            "nidn" => $request->nidn,
-            "nama" => $request->nama,
+            "peneliti" => $request->nama,
+            "judul" => $request->judul,
+            "tahun" => $request->tanggal,
+            // "" => $request->skema,  Belum ditambah ke Table proposal
+            "topik" => $request->topik,
+            "bidang_ilmu" => $request->bidangIlmu,
+            "file" => $request->file,
         ]);
     }
 
