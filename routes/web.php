@@ -18,7 +18,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, "home"])->name("home");
 Route::get('/tambah-proposal', [HomeController::class, "tambah"])->name("tambah");
 Route::get("/tambah-anggota", [HomeController::class, "tambahAnggota"])->name("tambahanggota");
-Route::get("/succes", [HomeController::class, "succes"])->name("succes");
+Route::get("/sukses", [HomeController::class, "succes"])->name("succes");
 
 Route::get("/register", [AuthController::class, "regsiter"])->name("register");
 Route::post("/handle-register", [AuthController::class, "handleRegister"])->name("auth.post.register");

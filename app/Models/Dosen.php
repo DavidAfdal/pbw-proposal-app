@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Dosen extends Model
+
+class Dosen extends Authenticatable
 {
     use HasFactory;
     protected $table = "dosen";
     protected $primaryKey = "nidn";
-    protected $fillable = ["name", "password", "role"];
+    protected $fillable = ["nidn","nama", "password", "role"];
 }

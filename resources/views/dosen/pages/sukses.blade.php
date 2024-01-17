@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-center align-items-center py-4">
                     <img src="{{asset('img/check.png')}}"/>
                 </div>
-                <p class="text-center text-white" style="font-size:36px">Terimakasih Mahesa Cahyadi atas partisipasinya. Proposal anda berhasil disimpan dan akan dilanjutkan proses review dari tim terkait</p>
+                <p class="text-center text-white" style="font-size:36px">Terimakasih {{auth()->user()->nama}} atas partisipasinya. Proposal anda berhasil disimpan dan akan dilanjutkan proses review dari tim terkait</p>
               </div>
             </div>
           </div>

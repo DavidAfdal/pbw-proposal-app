@@ -7,6 +7,11 @@
     <main>
         <div class="background">
             <div class="center">
+                @if(session()->has('errMsg'))
+                <div class="alert alert-danger">
+                    {{ session()->get('errMsg') }}
+                </div>
+            @endif
               <h2 class="">Daftar</h2>
               <div class="auth-box">
                 <h3>Selamat Datang di Klinik Proposal</h3>
@@ -14,10 +19,19 @@
                     @csrf
                   <label for="">NIDN :</label>
                   <input type="text" name="nidn" id="">
+                  @error('nidn')
+                  <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
                   <label for="">Nama :</label>
                   <input type="text" name="nama" id="">
+                  @error('nama')
+                  <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
                   <label for="">Kata Sandi :</label>
                   <input type="password" name="password" id="">
+                  @error('password')
+                  <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
                   <button type="submit">
                     Daftar
                   </button>

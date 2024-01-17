@@ -22,12 +22,12 @@
                   <label for="">Nama</label>
                   <input type="password" name="" id="">
                   <div class="d-flex justify-content-center gap-4">
-                    <button class="btn-tambah">
+                    <button class="btn-tambah" type="submit">
                         Tambah
                        </button>
-                    <button class="btn-selesai">
+                    <button class="btn-selesai" type="cancel">
                         Selesai
-                       </button>
+                    </button>
                   </div>
                 </form>
 

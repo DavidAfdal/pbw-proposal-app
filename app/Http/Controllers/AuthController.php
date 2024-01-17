@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Dosen;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -19,8 +22,8 @@ class AuthController extends Controller
 
     public function handleRegister(Request $request) {
         $request->validate([
-            'nama' => 'required',
             'nidn' => 'required|unique:dosen',
+            'nama' => 'required',
             'password' => 'required|min:6',
         ], [
             'nidn.required' => 'NIDN is required.',
@@ -30,9 +33,13 @@ class AuthController extends Controller
             'password.min' => 'Kata Sandi must be at least :min characters.',
         ]);
 
-        // $data = $request->all();
-        // $check = $this->create($data);
-        return redirect("login")->withSuccess('You have signed-in');
+        Dosen::create([
+            "nidn" => $request->nidn,
+            "nama" => $request->nama,
+            "password" => Hash::make($request->password),
+        ]);
+
+        return redirect("/")->with("succes", 'You have signed-in');
     }
 
     public function login() {
@@ -54,7 +61,7 @@ class AuthController extends Controller
             return redirect()->intended('home')
                 ->withSuccess('Signed in');
         }
-        return back()->withSuccess('Login details are not valid');
+        return back()->with("errMsg", 'Login details are not valid');
     }
 
 
@@ -66,7 +73,7 @@ class AuthController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

@@ -28,7 +28,7 @@ return new class extends Migration
 
 
             $table->foreign("nidn_dosen", "cm2_nidn_dosen_foreign")->references("nidn")->on("dosen");
-            $table->foreign("nidn_reviewer", "cm2_nidn_reviewer_foreign")->references("nidn")->on("dosen");
+            $table->foreign("nidn_reviewer", "cm2_nidn_reviewer_foreign")->references("nidn")->on("dosen")->nullable()->constrained();
         });
     }
 

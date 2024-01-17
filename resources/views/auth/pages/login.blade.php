@@ -9,7 +9,13 @@
             <div class="center">
               <h2 class="">Masuk</h2>
               <div class="auth-box">
+                @if(session()->has('errMsg'))
+                <div class="alert alert-danger">
+                    {{ session()->get('errMsg') }}
+                </div>
+            @endif
                 <h3>Selamat Datang di Klinik Proposal</h3>
+
                 <form action="{{route("auth.post.login")}}" method="post">
                     @csrf
                   <label for="">NIDN :</label>
@@ -20,7 +26,7 @@
                   <label for="">Kata Sandi :</label>
                   <input type="password" name="password" id="password">
                   @error('password')
-                  <div class="alert alert-danger">{{ $message }}</div>
+                  <span class="alert alert-danger">{{ $message }}</span>
               @enderror
               <button type="submit">
                 Masuk
