@@ -42,7 +42,6 @@ class ProposalController extends Controller
             "skema" => "required",
             "bidangIlmu" => "required",
             "file" => "required",
-            
         ]);
         Proposal::create([
             "nidn" => $request->nidn,
