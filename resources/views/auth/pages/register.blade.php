@@ -35,6 +35,9 @@
                   <button type="submit">
                     Daftar
                   </button>
+                  <a href="/" style="color:white; text-align:center" class="mt-2">
+                     Masuk
+                </a>
                 </form>
 
               </div>

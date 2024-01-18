@@ -16,19 +16,19 @@ return new class extends Migration
         Schema::create('proposal', function (Blueprint $table) {
             $table->id();
             $table->string("nidn_dosen");
-            $table->string("nidn_reviewer");
+            $table->string("nidn_reviewer")->nullable();
             $table->string("file");
             $table->string("peneliti");
             $table->string("judul");
             $table->string("tahun");
             $table->string("topik");
             $table->string("bidang_ilmu");
+            $table->string("skema");
             $table->string("status")->default("Sedang Ditinjau");
             $table->timestamps();
 
-
-            $table->foreign("nidn_dosen", "cm2_nidn_dosen_foreign")->references("nidn")->on("dosen");
-            $table->foreign("nidn_reviewer", "cm2_nidn_reviewer_foreign")->references("nidn")->on("dosen")->nullable()->constrained();
+            $table->foreign("nidn_dosen")->references("nidn")->on("dosen");
+            $table->foreign("nidn_reviewer")->references("nidn")->on("dosen")->onDelete('set null');
         });
     }
 

@@ -10,5 +10,5 @@ class Proposal extends Model
     use HasFactory;
     protected $table = "proposal";
     protected $primaryKey = "id";
-    protected $fillable = ["peneliti", "judul", "tahun", "topik", "bidang_ilmu", "file", "status","nidn_dosen", "nidn_reviewer"];
+    protected $fillable = ["peneliti", "judul", "tahun", "topik", "bidang_ilmu", "file", "status","nidn_dosen", "nidn_reviewer", "skema"];
 }

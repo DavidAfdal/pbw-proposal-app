@@ -43,6 +43,7 @@ class AuthController extends Controller
     }
 
     public function login() {
+
         return view('auth.pages.login');
     }
 
@@ -64,6 +65,14 @@ class AuthController extends Controller
         return back()->with("errMsg", 'Login details are not valid');
     }
 
+
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/'); // Redirect to the login page after logout
+    }
 
 
     /**

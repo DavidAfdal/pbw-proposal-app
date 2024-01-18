@@ -43,14 +43,20 @@ class ProposalController extends Controller
             "bidangIlmu" => "required",
             "file" => "required",
         ]);
+
+        $file = $request->file('file');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('uploads'), $fileName);
+        $filepath = 'uploads/' . $fileName;
+
         Proposal::create([
             "peneliti" => $request->nama,
             "judul" => $request->judul,
             "tahun" => $request->tanggal,
-            // "" => $request->skema,  Belum ditambah ke Table proposal
+            "skema" => $request->skema,
             "topik" => $request->topik,
             "bidang_ilmu" => $request->bidangIlmu,
-            "file" => $request->file,
+            "file" => $filepath,
         ]);
     }
 

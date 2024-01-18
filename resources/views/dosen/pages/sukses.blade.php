@@ -4,6 +4,7 @@
     @include('includes.head')
 </head>
 <body>
+    @include('includes/nav-user')
     <main>
         <div class="background">
             <div class="center">

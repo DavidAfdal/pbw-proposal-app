@@ -5,11 +5,12 @@
 </head>
 <body>
     <main>
+        @include('includes/nav-user')
         <div class="background">
             <div class="center">
               <h2 class="">Klinik Penelitian</h2>
               <div class="box">
-                <form action="{{route('proposal.tambah')}}" method="POST">
+                <form action="{{route('proposal.tambah')}}" method="POST" enctype="multipart/form-data">
                   <label for="">Nama Peneliti</label>
                   <input type="text" name="nama" id="" required>
                   <label for="">Judul Peneliti</label>
@@ -22,12 +23,12 @@
                   <input type="text" name="topik" id="" required>
                   <label for="">Bidang Ilmu</label>
                   <input type="text" name="bidangIlmu" id="" required>
+                  <div></div>
                   <label for="">Upload Proposal (PDF)</label>
-                  <input type="file" name="" id="file" accept="application/pdf,application/vnd.ms-excel">
+                  <input type="file" name="" id="file" accept="application/pdf">
                   <div class="d-flex justify-content-end">
-                    <input type="submit" value="Kirim Proposal">
+                    <button type="submit">Kirim Proposal</button>
                   </div>
-
                 </form>
 
               </div>
@@ -35,5 +36,6 @@
           </div>
 
     </main>
+
 </body>
 </html>
