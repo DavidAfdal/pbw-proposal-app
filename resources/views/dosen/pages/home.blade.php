@@ -4,33 +4,56 @@
     @include('includes.head')
 </head>
 <body>
-    @include('includes.nav-user')
+    @include('includes.navbar')
     <section class="background">
         <div class="center">
             <div class="box">
 
 
+                <p class="text-white mb-0" style="font-size:32px; font-weight:400;  text-decoration: underline;">Daftar Proposal Saya :</p>
                     @if (count($data) <= 0 )
-                        <p class="text-white mb-0" style="font-size:32px; font-weight:400;  text-decoration: underline;">Daftar Proposal Saya :</p>
-
-
                         <div class="d-flex align-items-center justify-content-center" style="height: 400px">
-
                             <p class="text-white text-center" style="font-size:32px; font-weight:600 ">Anda Belum Menambahkan Proposal</p>
                         </div>
-                        <div class="d-flex justify-content-end">
+
+                    @else
+                    <div class="grid">
+                        @foreach ($data as $proposal )
+                        <a href="/detail-proposal/{{$proposal->id}}">
+                            <div id="card">
+                                <div style="height:400px; overflow-x: hidden; overflow-y: hidden;">
+                                    <embed style="width:100%; height:100%; border:none; " src="{{ asset("uploads/".$proposal->file) }}#toolbar=0" type="application/pdf"  scrolling="no" />
+                                </div>
+
+                                <div class="card-desc">
+                                    <div class="d-flex justify-content-between">
+                                        <p>{{$proposal->judul}}</p>
+                                        <div class="d-flex gap-2 align-items-center">
+                                            @if ($proposal->status == "Sedang Ditinjau")
+                                            <i class="ri-hourglass-fill" style="font-size:20px"></i>
+                                            @else
+                                            <i class="ri-checkbox-circle-line" style="font-size:20px"></i>
+                                            @endif
+                                            <p>{{$proposal->status}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        @endforeach
+                    </div>
+
+                    @endif
+                    <div class="d-flex justify-content-end">
                         <a href="{{Url("tambah-proposal")}}" style="text-decoration:none">
                             <button class="float-right">Tambah Proposal</button>
                         </a>
-                       </div>
-
-                    @endif
-
-
+                    </div>
             </div>
-
         </div>
     </section>
+    @include('includes.footer')
+
 </body>
 </html>
 

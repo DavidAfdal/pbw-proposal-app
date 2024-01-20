@@ -9,6 +9,10 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+main {
+    position: relative;
+}
+
 .background{
     background-image: url("../img/background.png");
     background-position: center;
@@ -16,15 +20,34 @@ body{
     min-height: 100vh;
     width: 100%;
     position: relative;
-    padding-block: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* padding-block: 50px; */
 }
 
 .center{
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-block: ;
     flex-direction: column;
+    padding-top: 200px;
+    padding-bottom: 80px;
+}
+
+.center-auth{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.center-auth h2{
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
 .center h2{
@@ -104,6 +127,12 @@ input{
     border-radius: 10px;
     justify-content: center;
     cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+
+.switch:hover{
+    background-color: #27005D;
+    color: #fff;
 }
 
 .switch.active{
@@ -142,9 +171,11 @@ button{
 }
 
 .navbar {
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.65);
-    height: 30px;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.70);
+    padding: 16px;
+    width: 100%;
 }
 
 #file{
@@ -166,3 +197,102 @@ a {
 P {
     margin:0;
 }
+
+
+.password-container {
+    position: relative;
+    background-color:white ;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.password-container:focus-within {
+    outline: 2px solid #232323; /* Border when input is focused */
+}
+
+#password {
+    margin: 0;
+    padding-right: 30px; /* Extra space for the eye icon */
+    width: 100%; /* Ensure the input takes up the full width of the container */
+    border: none; /* Remove input border */
+    outline: none; / /* Berikan ruang ekstra di sebelah kanan untuk ikon mata */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+footer {
+    background-color: #6B6FB6;
+    color: #fff;
+    padding: 10px 16px;
+}
+
+.nav-link li a {
+  color: #232323;
+  position: relative;
+  font-weight: 500;
+}
+
+.nav-link li a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left:0;
+    height: 4px;
+    background-color: #6B6FB6;
+    width: 0;
+    transition: ease-in-out 0.5s;
+}
+
+.nav-link li a:hover::before {
+   width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    margin-top: 20px;
+}
+
+.grid-details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-top: 20px;
+}
+.card-desc {
+    background-color: #595D9A;
+    padding-inline: 16px;
+    padding-top: 8px;
+    padding-bottom: 36px;
+    color: #fff;
+}
+.card-desc-details{
+    background-color: #595D9A;
+    padding-inline: 16px;
+    padding-block: 16px;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+}
+.status-details {
+    background-color: #27005D;
+    color: #fff;
+    padding-inline:16px ;
+    border-radius: 10px;
+}
+.komentar {
+    margin-top: 30px ;
+    border-radius: 10px;
+    width: 95%;
+    margin-inline: auto;
+    background-color: #fff ;
+    min-height: 200px;
+}
+

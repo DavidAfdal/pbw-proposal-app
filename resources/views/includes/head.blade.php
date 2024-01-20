@@ -10,3 +10,7 @@
 <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<link
+href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+rel="stylesheet"
+/>

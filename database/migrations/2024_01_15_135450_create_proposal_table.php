@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('proposal', function (Blueprint $table) {
             $table->id();
             $table->string("nidn_dosen");
-            $table->string("nidn_reviewer")->nullable();
+            $table->string("nidn_peninjau")->nullable();
             $table->string("file");
             $table->string("peneliti");
             $table->string("judul");
-            $table->string("tahun");
+            $table->dateTime("tanggal");
             $table->string("topik");
             $table->string("bidang_ilmu");
             $table->string("skema");
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign("nidn_dosen")->references("nidn")->on("dosen");
-            $table->foreign("nidn_reviewer")->references("nidn")->on("dosen")->onDelete('set null');
+            $table->foreign("nidn_peninjau")->references("nidn")->on("dosen")->onDelete('set null');
         });
     }
 
