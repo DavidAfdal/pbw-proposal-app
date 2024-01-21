@@ -20,6 +20,11 @@ class PeninjauController extends Controller
 
     }
 
+    public function details($id) {
+        $data = Proposal::find($id);
+        return view("reviewer.pages.detail-tinjaun")->with('proposal', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

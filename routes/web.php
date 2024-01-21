@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
@@ -27,9 +28,14 @@ Route::group(['middleware' => 'check.role:dosen'], function () {
 });
 
 Route::group(['middleware' => 'check.role:peninjau'], function () {
-   Route::get("/daftar-tinjauan", [PeninjauController::class, "index" ])->name("daftarTinjauan");
+   Route::get("/peninjau/daftar-tinjauan", [PeninjauController::class, "index" ])->name("daftarTinjauan");
+   Route::get("/peninjau/detail-proposal/{id}", [PeninjauController::class, "details" ])->name("daftarTinjauan");
 });
 
+Route::group(['middleware' => 'check.role:admin'], function () {
+   Route::get("/admin/dashboard", [AdminController::class, "index" ])->name("dashboard");
+   Route::get("/admin/detail-proposal/{id}", [AdminController::class, "details" ])->name("detailsAdmin");
+});
 
 Route::group(['middleware' => 'check.login'], function() {
     Route::get("/register", [AuthController::class, "register"])->name("register");

@@ -12,9 +12,9 @@
         @if (auth()->user()->role == "dosen")
         <li><a href="/home">Daftar Proposal</a></li>
         @elseif (auth()->user()->role == "peninjau")
-        <li><a href="/daftar-tinjauan">Daftar Tinjauan</a></li>
+        <li><a href="/peninjau/daftar-tinjauan">Tinjauan Proposal</a></li>
         @else
-        <li><a href="/daftar-tinjauan">Daftar Proposal</a></li>
+        <li><a href="/admin/dashboard">Daftar Proposal</a></li>
         @endif
         <li>
             <a href="/logout">Keluar</a>

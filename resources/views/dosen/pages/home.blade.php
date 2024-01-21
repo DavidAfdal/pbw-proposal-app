@@ -21,10 +21,9 @@
                         @foreach ($data as $proposal )
                         <a href="/detail-proposal/{{$proposal->id}}">
                             <div id="card">
-                                <div style="height:400px; overflow-x: hidden; overflow-y: hidden;">
-                                    <embed style="width:100%; height:100%; border:none; " src="{{ asset("uploads/".$proposal->file) }}#toolbar=0" type="application/pdf"  scrolling="no" />
+                                <div style="height:400px;">
+                                    <iframe style="width:100%; height:100%;" src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&navpanes=0&scrollbar=0" scrolling="no"></iframe>
                                 </div>
-
                                 <div class="card-desc">
                                     <div class="d-flex justify-content-between">
                                         <p>{{$proposal->judul}}</p>

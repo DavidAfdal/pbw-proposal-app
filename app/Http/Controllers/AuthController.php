@@ -59,8 +59,22 @@ class AuthController extends Controller
 
         $credentials = $request->only('nidn', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('home')
-                ->withSuccess('Signed in');
+            $user = Auth::user();
+
+            switch ($user->role) {
+            case 'admin':
+                return redirect()->intended('admin/dashboard')
+                    ->withSuccess('Signed in');
+                break;
+            case 'peninjau':
+                return redirect()->intended('peninjau/daftar-tinjauan')
+                    ->withSuccess('Signed in');
+                break;
+            default:
+                return redirect()->intended('home')
+                    ->withSuccess('Signed in');
+        }
+
         }
         return back()->with("errMsg", 'Login details are not valid');
     }

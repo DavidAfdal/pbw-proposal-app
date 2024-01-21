@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proposal;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,8 +14,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $data = Proposal::all();
+        return view("admin.pages.dahsboard")->with('data', $data);
     }
+
+    public function details($id) {
+        $data = Proposal::find($id);
+        return view("admin.pages.detail-proposal")->with('proposal', $data);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -9,7 +9,7 @@
         <div class="center">
             <div class="box">
                 <div class="d-flex justify-content-between">
-                    <p class="text-white mb-0" style="font-size:32px; font-weight:400;  text-decoration: underline;">Daftar Proposal Saya :</p>
+                    <p class="text-white mb-0" style="font-size:32px; font-weight:400;  text-decoration: underline;">Detail Proposal :</p>
                     <div class="d-flex gap-2 align-items-center status-details">
                         @if ($proposal->status == "Sedang Ditinjau")
                         <i class="ri-hourglass-fill" style="font-size:20px"></i>
@@ -58,10 +58,13 @@
                        </div>
                     </div>
                 </div>
-
-                <div class="komentar">
-                   <p class="fw-bold">Peninjau Belum Ditentukan</p>
+                @if ($proposal->nidn_peninjau == null)
+                <div class="d-flex justify-content-end">
+                    <button type="submit">Tambah Pengamat</button>
                 </div>
+                @endif
+
+
             </div>
 
         </div>
