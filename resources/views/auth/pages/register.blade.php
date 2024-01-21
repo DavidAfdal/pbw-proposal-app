@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @include('includes.head')
+    @include('includes.head', ['title' => "Klinik Penelitian"])
 </head>
 <body>
     <main>
