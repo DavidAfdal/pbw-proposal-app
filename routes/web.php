@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnggotaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
@@ -25,6 +26,9 @@ Route::group(['middleware' => 'check.role:dosen'], function () {
     Route::get("/tambah-anggota", [DosenController::class, "tambahAnggota"])->name("tambahanggota");
     Route::get("/sukses", [DosenController::class, "succes"])->name("succes");
     Route::get("/detail-proposal/{id}", [DosenController::class, "details"])->name("detailProposal");
+    Route::post('/tambah-anggota-dosen/{id}',[AnggotaController::class, "TambahAnggotaDosen"])->name("tambah.anggotadosen"); 
+        
+    
 });
 
 Route::group(['middleware' => 'check.role:peninjau'], function () {

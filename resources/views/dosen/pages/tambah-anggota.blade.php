@@ -37,11 +37,11 @@
                     </button>
                   </div>
                 </form>
-                <form action="" style="display: none;" id="formDosen">
+                <form action="{{route('tambah.anggotadosen', ['id'=>$id])}}" method="POST" style="display: none;" id="formDosen">
                   <label for="">NIDN </label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="nidn" id="">
                   <label for="">Nama</label>
-                  <input type="password" name="" id="">
+                  <input type="text" name="nama" id="">
                   <div class="d-flex justify-content-center gap-4">
                     <button class="btn-tambah" type="submit">
                         Tambah
@@ -55,7 +55,7 @@
                   <label for="">Mitra </label>
                   <input type="text" name="" id="">
                   <label for="">Nama Pemimpin</label>
-                  <input type="password" name="" id="">
+                  <input type="text" name="" id="">
                   <div class="d-flex justify-content-center gap-4">
                     <button class="btn-tambah" type="submit">
                         Tambah
