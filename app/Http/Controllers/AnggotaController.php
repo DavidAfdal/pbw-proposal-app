@@ -85,11 +85,13 @@ class AnggotaController extends Controller
             "nama" => "required",
             "nidn" => "required",
         ]);
+
         $anggotadosen = AnggotaDosen::create([
             "nama" => $request->nama,
             "nidn" => $request->nidn,
             "id_proposal" => $id,
         ]);
+
         return back()->with("message", "success Tambah Anggota Dosen");
     }
 }

@@ -10,6 +10,11 @@
             <div class="center">
               <div class="form-box">
                 <h3>Form Penambahan Anggota Peneliti</h3>
+                @if(session('message'))
+                <div class="alert alert-success">
+                   {{ session('message') }}
+                </div>
+              @endif
                 <div class="d-flex justify-content-end mt-4">
                     <div class="d-flex gap-4">
 
@@ -37,7 +42,8 @@
                     </button>
                   </div>
                 </form>
-                <form action="{{route('tambah.anggotadosen', ['id'=>$id])}}" method="POST" style="display: none;" id="formDosen">
+                <form  action="{{route("tambah.anggotadosen", ["id" => $id])}}" method="POST" style="display: none;" id="formDosen">
+                    @csrf
                   <label for="">NIDN </label>
                   <input type="text" name="nidn" id="">
                   <label for="">Nama</label>

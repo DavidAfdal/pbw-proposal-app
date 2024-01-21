@@ -21,8 +21,8 @@ class DosenController extends Controller
         return view("dosen.pages.tambah-proposal");
     }
 
-    public function tambahAnggota() {
-        return view("dosen.pages.tambah-anggota");
+    public function tambahAnggota($id) {
+        return view("dosen.pages.tambah-anggota", compact("id"));
     }
 
     public function succes() {

@@ -55,7 +55,7 @@ class ProposalController extends Controller
         $nidnUser = Auth::user()->nidn;
 
         try{
-           $proposal =  Proposal::create([
+           $proposal =Proposal::create([
                 "peneliti" => $request->nama,
                 "judul" => $request->judul,
                 "tanggal" => $request->tanggal,
@@ -64,15 +64,14 @@ class ProposalController extends Controller
                 "bidang_ilmu" => $request->bidangIlmu,
                 "file" => $fileName,
                 "nidn_dosen" => $nidnUser,
-                ]);
-        } catch(Exception $e) {
-          return back()->with("error", $e->getMessage());
-        }
+           ]);
+           return redirect("/tambah-anggota/{$proposal->id}");
+            } catch(Exception $e) {
+                return back()->with("error", $e->getMessage());
+            }
 
 
 
-
-    return redirect("/tambah-anggota")->with("id", $proposal->id);
 
 
     }

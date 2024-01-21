@@ -23,12 +23,12 @@ Route::group(['middleware' => 'check.role:dosen'], function () {
     Route::get('/home', [DosenController::class, "home"])->name("home");
     Route::get('/tambah-proposal', [DosenController::class, "tambah"])->name("tambah");
     Route::post('/tambah-proposal', [ProposalController::class, "handleTambahProposal"])->name("proposal.tambah");
-    Route::get("/tambah-anggota", [DosenController::class, "tambahAnggota"])->name("tambahanggota");
+    Route::get("/tambah-anggota/{id}", [DosenController::class, "tambahAnggota"])->name("tambahanggota");
     Route::get("/sukses", [DosenController::class, "succes"])->name("succes");
     Route::get("/detail-proposal/{id}", [DosenController::class, "details"])->name("detailProposal");
-    Route::post('/tambah-anggota-dosen/{id}',[AnggotaController::class, "TambahAnggotaDosen"])->name("tambah.anggotadosen"); 
-        
-    
+    Route::post('/tambah-anggota-dosen/{id}',[AnggotaController::class, "TambahAnggotaDosen"])->name("tambah.anggotadosen");
+
+
 });
 
 Route::group(['middleware' => 'check.role:peninjau'], function () {
