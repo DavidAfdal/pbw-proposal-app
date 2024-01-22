@@ -13,15 +13,17 @@
                     <div class="d-flex gap-2 align-items-center status-details">
                         @if ($proposal->status == "Sedang Ditinjau")
                         <i class="ri-hourglass-fill" style="font-size:20px"></i>
-                        @else
+                        @elseif ($proposal->status == "Sudah Baik")
                         <i class="ri-checkbox-circle-line" style="font-size:20px"></i>
+                        @else
+                        <i class="ri-file-edit-fill" style="font-size:20px"></i>
                         @endif
                         <p>{{$proposal->status}}</p>
                     </div>
                 </div>
                 <div class="grid-details">
                     <div class="card" style="border:none">
-                        <embed style="width:100%; height:400px;border:none " src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&scrollbar=0" type="application/pdf"  scrolling="no" />
+                        <embed style="width:100%;border:none " src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&scrollbar=0" type="application/pdf"  scrolling="no" />
                             <div class="card-desc-details">
                                 <a href={{ route('download', ['filename' => $proposal->file]) }} style="color:white">
                                     <div class="d-flex gap-2">
@@ -56,6 +58,29 @@
                          <p class="text-1">Bidang Ilmu :</p>
                          <p class="text-2">{{$proposal->bidang_ilmu}}</p>
                        </div>
+                       @if(count($proposal->mitra()->get()) > 0 )
+                       <div>
+                         <p class="text-1">Mitra :</p>
+                         @foreach($proposal->mitra()->get() as $mitra)
+                         <p class="text-2">{{$mitra->nama}}</p>
+                         @endforeach
+                       </div>
+                       @endif
+                       <div>
+                         <p class="text-1">Anggota :</p>
+                         @foreach($proposal->anggotaDosen()->get() as $anggotaDosen)
+                         <p class="text-2">{{$anggotaDosen->nama}} ({{$anggotaDosen->nidn}})</p>
+                         @endforeach
+                         @foreach($proposal->anggotaMahasiswa()->get() as $anggotaMahasiswa)
+                         <p class="text-2">{{$anggotaMahasiswa->nama}} ({{$anggotaMahasiswa->npm}})</p>
+                         @endforeach
+                       </div>
+                       @if ($proposal->nidn_peninjau != null)
+                       <div>
+                         <p class="text-1">Peninjau :</p>
+                         <p class="text-2">{{$proposal->peninjau->nama}}</p>
+                       </div>
+                       @endif
                     </div>
                 </div>
                 @if ($proposal->nidn_peninjau == null)

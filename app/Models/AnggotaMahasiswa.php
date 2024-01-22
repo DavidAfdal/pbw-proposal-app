@@ -11,4 +11,9 @@ class AnggotaMahasiswa extends Model
     protected $table = "anggota_mahasiswa";
     protected $primaryKey = "id";
     protected $fillable = ["nama","npm", "id_proposal"];
+
+    public function proposal()
+    {
+        return $this->belongsTo(Proposal::class, "id_proposal");
+    }
 }

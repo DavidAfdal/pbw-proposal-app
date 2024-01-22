@@ -11,4 +11,8 @@ class AnggotaDosen extends Model
     protected $table = "anggota_dosen";
     protected $primaryKey = "id";
     protected $fillable = ["nama", "nidn", "id_proposal"];
+    public function proposal()
+    {
+        return $this->belongsTo(Proposal::class, "id_proposal");
+    }
 }

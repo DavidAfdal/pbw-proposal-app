@@ -8,7 +8,17 @@
     <section class="background">
         <div class="center">
             <div class="box">
-                <p class="text-white mb-0" style="font-size:32px; font-weight:400;  text-decoration: underline;">Daftar Proposal :</p>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-white mb-0" style="font-size:32px; font-weight:400;  text-decoration: underline;">Daftar Proposal :</p>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width:fit-content">
+                        <option>2023</option>
+                        <option>2023</option>
+                        <option>2023</option>
+                        <option>2023</option>
+                        <option>2023</option>
+                        <option>2023</option>
+                    </select>
+                </div>
                     @if (count($data) <= 0 )
                         <div class="d-flex align-items-center justify-content-center" style="height: 400px">
                             <p class="text-white text-center" style="font-size:32px; font-weight:600 ">Anda Belum Memiliki Proposal Untuk Di Evaluasi</p>
@@ -27,8 +37,10 @@
                                             <div class="d-flex gap-2 align-items-center">
                                                 @if ($proposal->status == "Sedang Ditinjau")
                                                 <i class="ri-hourglass-fill" style="font-size:20px"></i>
-                                                @else
+                                                @elseif ($proposal->status == "Sudah Baik")
                                                 <i class="ri-checkbox-circle-line" style="font-size:20px"></i>
+                                                @else
+                                                <i class="ri-file-edit-fill" style="font-size:20px"></i>
                                                 @endif
                                                 <p>{{$proposal->status}}</p>
                                             </div>

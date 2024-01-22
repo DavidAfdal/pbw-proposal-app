@@ -24,25 +24,26 @@
                              <div class="switch" onclick="showForm(this,'mitra')">
                             Mitra
                             </div>
-
-
                     </div>
                 </div>
-                <form action="" style="display: flex;" id="formMahasiswa">
+                <form action="{{route("tambah.anggotaMahasiswa", ["id" => $id])}}" method="POST" style="display: flex;" id="formMahasiswa">
+                    @csrf
                   <label for="">NPM </label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="npm" id="">
                   <label for="">Nama</label>
-                  <input type="password" name="" id="">
+                  <input type="text" name="nama" id="">
                   <div class="d-flex justify-content-center gap-4">
                     <button class="btn-tambah" type="submit">
                         Tambah
                        </button>
-                    <button class="btn-selesai" type="cancel">
-                        Selesai
-                    </button>
+                       <a href="/sukses">
+                        <button class="btn-selesai" type="button">
+                            Selesai
+                        </button>
+                    </a>
                   </div>
                 </form>
-                <form  action="{{route("tambah.anggotadosen", ["id" => $id])}}" method="POST" style="display: none;" id="formDosen">
+                <form  action="{{route("tambah.anggotaDosen", ["id" => $id])}}" method="POST" style="display: none;" id="formDosen">
                     @csrf
                   <label for="">NIDN </label>
                   <input type="text" name="nidn" id="">
@@ -52,23 +53,27 @@
                     <button class="btn-tambah" type="submit">
                         Tambah
                        </button>
-                    <button class="btn-selesai" type="cancel">
-                        Selesai
-                    </button>
+                    <a href="/sukses">
+                        <button class="btn-selesai" type="button" >
+                            Selesai
+                        </button>
+                    </a>
                   </div>
                 </form>
-                <form action="" style="display: none;" id="formMitra">
+                <form action="{{route("tambah.mitra", ["id" => $id])}}" style="display: none;" method="POST" id="formMitra">
                   <label for="">Mitra </label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="nama" id="">
                   <label for="">Nama Pemimpin</label>
-                  <input type="text" name="" id="">
+                  <input type="text" name="pemimpin" id="">
                   <div class="d-flex justify-content-center gap-4">
                     <button class="btn-tambah" type="submit">
                         Tambah
                        </button>
-                    <button class="btn-selesai" type="cancel">
-                        Selesai
-                    </button>
+                       <a href="/sukses">
+                        <button class="btn-selesai" type="button">
+                            Selesai
+                        </button>
+                    </a>
                   </div>
                 </form>
               </div>

@@ -13,8 +13,10 @@
                     <div class="d-flex gap-2 align-items-center status-details">
                         @if ($proposal->status == "Sedang Ditinjau")
                         <i class="ri-hourglass-fill" style="font-size:20px"></i>
-                        @else
+                        @elseif ($proposal->status == "Sudah Baik")
                         <i class="ri-checkbox-circle-line" style="font-size:20px"></i>
+                        @else
+                        <i class="ri-file-edit-fill" style="font-size:20px"></i>
                         @endif
                         <p>{{$proposal->status}}</p>
                     </div>
@@ -56,11 +58,44 @@
                          <p class="text-1">Bidang Ilmu :</p>
                          <p class="text-2">{{$proposal->bidang_ilmu}}</p>
                        </div>
+                       @if(count($proposal->mitra()->get()) > 0 )
+                       <div>
+                         <p class="text-1">Mitra :</p>
+                         @foreach($proposal->mitra()->get() as $mitra)
+                         <p class="text-2">{{$mitra->nama}}</p>
+                         @endforeach
+                       </div>
+                       @endif
+                       <div>
+                         <p class="text-1">Anggota :</p>
+                         @foreach($proposal->anggotaDosen()->get() as $anggotaDosen)
+                         <p class="text-2">{{$anggotaDosen->nama}} ({{$anggotaDosen->nidn}})</p>
+                         @endforeach
+                         @foreach($proposal->anggotaMahasiswa()->get() as $anggotaMahasiswa)
+                         <p class="text-2">{{$anggotaMahasiswa->nama}} ({{$anggotaMahasiswa->npm}})</p>
+                         @endforeach
+                       </div>
+
                     </div>
                 </div>
 
                 <div class="komentar">
+                   @if ($proposal->nidn_peninjau !== null)
+                   <p class="fw-bold nama-peninjau">{{$proposal->peninjau->nama}} (Pengamat)</p>
+                   <p class="mt-2 fw-bold">Komentar :</p>
+                   @if(count($proposal->comment()->get()) > 0 )
+                   @foreach($proposal->comment()->get() as $comment)
+                   <div class="box-comment">
+                       <p class="text-2" style="color:#232323">{{$comment->review}}</p>
+                   </div>
+                   @endforeach
+                   @else
+                   <P class="mt-2">Belum Ada Komentar</P>
+                   @endif
+                   @else
                    <p class="fw-bold">Peninjau Belum Ditentukan</p>
+                   @endif
+
                 </div>
             </div>
 

@@ -12,4 +12,15 @@ class Dosen extends Authenticatable
     protected $table = "dosen";
     protected $primaryKey = "nidn";
     protected $fillable = ["nidn","nama", "password", "role"];
+
+    public function review()
+    {
+        return $this->hasMany(Comment::class, "nidn_dosen");
+    }
+
+    public function proposalTinjauan()
+    {
+        return $this->hasOne(Proposal::class, "nidn_peninjau");
+    }
+
 }

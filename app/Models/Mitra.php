@@ -11,4 +11,9 @@ class Mitra extends Model
     protected $table = "mitra";
     protected $primaryKey = "id";
     protected $fillable = ["nama","id_proposal", "pemimpin"];
+
+    public function proposal()
+    {
+        return $this->belongsTo(Proposal::class, "id_proposal");
+    }
 }

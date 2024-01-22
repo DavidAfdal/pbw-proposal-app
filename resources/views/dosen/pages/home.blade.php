@@ -30,8 +30,10 @@
                                         <div class="d-flex gap-2 align-items-center">
                                             @if ($proposal->status == "Sedang Ditinjau")
                                             <i class="ri-hourglass-fill" style="font-size:20px"></i>
-                                            @else
+                                            @elseif ($proposal->status == "Sudah Baik")
                                             <i class="ri-checkbox-circle-line" style="font-size:20px"></i>
+                                            @else
+                                            <i class="ri-file-edit-fill" style="font-size:20px"></i>
                                             @endif
                                             <p>{{$proposal->status}}</p>
                                         </div>

@@ -26,14 +26,15 @@ Route::group(['middleware' => 'check.role:dosen'], function () {
     Route::get("/tambah-anggota/{id}", [DosenController::class, "tambahAnggota"])->name("tambahanggota");
     Route::get("/sukses", [DosenController::class, "succes"])->name("succes");
     Route::get("/detail-proposal/{id}", [DosenController::class, "details"])->name("detailProposal");
-    Route::post('/tambah-anggota-dosen/{id}',[AnggotaController::class, "TambahAnggotaDosen"])->name("tambah.anggotadosen");
-
-
+    Route::post('/tambah-anggota-dosen/{id}',[AnggotaController::class, "TambahAnggotaDosen"])->name("tambah.anggotaDosen");
+    Route::post('/tambah-anggota-mahasiswa/{id}',[AnggotaController::class, "TambahAnggotaMahasiswa"])->name("tambah.anggotaMahasiswa");
+    Route::post('/tambah-mitra/{id}',[AnggotaController::class, "TambahMitra"])->name("tambah.mitra");
 });
 
 Route::group(['middleware' => 'check.role:peninjau'], function () {
    Route::get("/peninjau/daftar-tinjauan", [PeninjauController::class, "index" ])->name("daftarTinjauan");
    Route::get("/peninjau/detail-proposal/{id}", [PeninjauController::class, "details" ])->name("daftarTinjauan");
+   Route::post('/peninjau/tambah-comment/{id}',  [PeninjauController::class, "TambahComment" ])->name("tambah.comment");
 });
 
 Route::group(['middleware' => 'check.role:admin'], function () {
