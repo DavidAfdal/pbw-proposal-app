@@ -19,10 +19,10 @@
                     @else
                     <div class="grid">
                         @foreach ($data as $proposal )
-                        <a href="/detail-proposal/{{$proposal->id}}">
+                        <a href="/detail-proposal/{{$proposal->id}}" class="card-link">
                             <div id="card">
                                 <div style="height:400px;">
-                                    <iframe style="width:100%; height:100%;" src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&navpanes=0&scrollbar=0" scrolling="no"></iframe>
+                                    <embed src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&navpanes=0&scrollbar=0" scrolling="no">
                                 </div>
                                 <div class="card-desc">
                                     <div class="d-flex justify-content-between">

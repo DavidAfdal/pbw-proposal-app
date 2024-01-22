@@ -34,5 +34,10 @@ class Proposal extends Model
         return $this->belongsTo(Dosen::class, "nidn_peninjau");
     }
 
+    public function user()
+    {
+        return $this->belongsTo(Dosen::class, "nidn_dosen");
+    }
+
 
 }

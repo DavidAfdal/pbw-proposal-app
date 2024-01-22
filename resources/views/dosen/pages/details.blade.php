@@ -23,7 +23,7 @@
                 </div>
                 <div class="grid-details">
                     <div class="card" style="border:none">
-                        <embed style="width:100%; height:400px;border:none " src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&scrollbar=0" type="application/pdf"  scrolling="no" />
+                        <embed src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&scrollbar=none" type="application/pdf"  scrolling="no" />
                             <div class="card-desc-details">
                                 <a href={{ route('download', ['filename' => $proposal->file]) }} style="color:white">
                                     <div class="d-flex gap-2">
@@ -81,7 +81,7 @@
 
                 <div class="komentar">
                    @if ($proposal->nidn_peninjau !== null)
-                   <p class="fw-bold nama-peninjau">{{$proposal->peninjau->nama}} (Pengamat)</p>
+                   <p class="fw-bold nama-peninjau">{{$proposal->peninjau->nama}} (Peninjau)</p>
                    <p class="mt-2 fw-bold">Komentar :</p>
                    @if(count($proposal->comment()->get()) > 0 )
                    @foreach($proposal->comment()->get() as $comment)

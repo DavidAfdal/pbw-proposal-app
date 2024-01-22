@@ -23,7 +23,7 @@
                 </div>
                 <div class="grid-details">
                     <div class="card" style="border:none">
-                        <embed style="width:100%; height:400px;border:none " src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&scrollbar=0" type="application/pdf"  scrolling="no" />
+                        <embed src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&scrollbar=none" type="application/pdf"  scrolling="no" />
                             <div class="card-desc-details">
                                 <a href={{ route('download', ['filename' => $proposal->file]) }} style="color:white">
                                     <div class="d-flex gap-2">
@@ -105,11 +105,11 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <!-- Modal content goes here -->
-            {{-- <span class="close">&times;</span> --}}
+            <h2 class="mb-2 text-center">Tambah Komentar</h2>
             <form method="post" action="{{route('tambah.comment', ['id' => $id])}}">
                 @csrf
                 <label for="" style="color:#232323">Komentar</label>
-                <textarea type="text" name="review" id="" class="border mb-2">
+                <textarea type="text" name="review" id="" class="border mb-2" rows="5">
 
                 </textarea>
                 <label for=""  style="color:#232323">Status</label>
@@ -122,7 +122,7 @@
                         Tambah
                        </button>
 
-                        <button class="btn-selesai" type="button" onclick="closeModal()">
+                        <button class="btn-selesai" type="button" id="close">
                            Batal
                         </button>
 
@@ -138,7 +138,7 @@
         var modal = document.getElementById('myModal');
 
         // Get the close button
-        var closeButton = document.querySelector('.close');
+        var closeButton = document.getElementById('close');
 
         // Function to open the modal
         function openModal() {

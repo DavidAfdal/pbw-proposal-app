@@ -23,7 +23,7 @@
                 </div>
                 <div class="grid-details">
                     <div class="card" style="border:none">
-                        <embed style="width:100%;border:none " src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&scrollbar=0" type="application/pdf"  scrolling="no" />
+                        <embed src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&scrollbar=none" type="application/pdf"  scrolling="no" />
                             <div class="card-desc-details">
                                 <a href={{ route('download', ['filename' => $proposal->file]) }} style="color:white">
                                     <div class="d-flex gap-2">
@@ -62,7 +62,7 @@
                        <div>
                          <p class="text-1">Mitra :</p>
                          @foreach($proposal->mitra()->get() as $mitra)
-                         <p class="text-2">{{$mitra->nama}}</p>
+                         <p class="text-2">{{$mitra->nama}} - {{$mitra->Pemimpin}}</p>
                          @endforeach
                        </div>
                        @endif
@@ -78,14 +78,19 @@
                        @if ($proposal->nidn_peninjau != null)
                        <div>
                          <p class="text-1">Peninjau :</p>
-                         <p class="text-2">{{$proposal->peninjau->nama}}</p>
+                         <p class="text-2">{{$proposal->peninjau->nama}} ({{$proposal->peninjau->nidn}})</p>
                        </div>
+                       @else
+                       <div>
+                        <p class="text-1">Peninjau :</p>
+                        <p class="text-2">Peninjau Belum Ditentukan</p>
+                      </div>
                        @endif
                     </div>
                 </div>
                 @if ($proposal->nidn_peninjau == null)
                 <div class="d-flex justify-content-end">
-                    <button type="submit">Tambah Pengamat</button>
+                    <button type="button" onclick="openModal()">Tambah Pengamat</button>
                 </div>
                 @endif
 
@@ -94,7 +99,98 @@
 
         </div>
     </section>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <!-- Modal content goes here -->
+            {{-- <span class="close">&times;</span> --}}
+            <form method="post" action="{{route("tambahPeninjau", ["id" => $id])}}" >
+                @csrf
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Nama Peninjau" name="searchInput">
+                    <i class="search-icon ri-search-line" id="searchName"></i>
+                </div>
+                <div class="body-modal-scroolable" id="body-modal">
+                </div>
+                <div class="garis"></div>
+                <div class="d-flex justify-content-end gap-4">
+                    <button  type="submit">
+                        Tambah
+                       </button>
+                  </div>
+            </form>
+        </div>
+    </div>
     @include('includes.footer')
 
+
+    <script>
+         var modal = document.getElementById('myModal');
+
+
+// Function to open the modal
+function openModal() {
+    modal.style.display = 'block';
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+// Close the modal if the close button is clicked
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Handle search button click
+            $.ajax({
+            url:  '{{ route("searchPeninjau") }}',
+            type: 'POST',
+            data: { search:"" },
+            success: function (response) {
+                console.log(response.html);
+                 $('#body-modal').html(response.html);
+
+            },
+            error: function (error) {
+                console.log('Error:', error);
+            }
+        });
+
+            $('#searchInput').on('keyup', function () {
+                // Make an AJAX request to the searchData method in DataController
+                $value=$(this).val();
+                $.ajax({
+                    url: '{{ route("searchPeninjau") }}',
+                    type: 'POST',
+                    data: { search: $value},
+                    success: function (response) {
+                        // Update the modal body with the fetched data
+                        console.log(response.html);
+                        $('#body-modal').html(response.html);
+
+                        // Show the modal
+                        $('#myModal').css({
+                            "display": "block"
+                        })
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+        </script>
 </body>
 </html>

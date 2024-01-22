@@ -10,13 +10,17 @@
             <div class="box">
                 <div class="d-flex align-items-center justify-content-between">
                     <p class="text-white mb-0" style="font-size:32px; font-weight:400;  text-decoration: underline;">Daftar Proposal :</p>
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width:fit-content">
-                        <option>2023</option>
-                        <option>2023</option>
-                        <option>2023</option>
-                        <option>2023</option>
-                        <option>2023</option>
-                        <option>2023</option>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width:fit-content" name="tahun">
+                        {{ $last= date('Y')- 5 }}
+                        {{ $now = date('Y') + 5 }}
+
+                @for ($i = $now; $i >= $last; $i--)
+                 @if($i == "2024")
+                 <option value="{{ $i }}" selected>{{ $i }} <i class="ri-calendar-line"></i></option>
+                 @continue
+                 @endif
+                 <option value="{{ $i }}">{{ $i }} <i class="ri-calendar-line"></i></option>
+                @endfor
                     </select>
                 </div>
                     @if (count($data) <= 0 )
@@ -26,10 +30,10 @@
                         @else
                         <div class="grid">
                             @foreach ($data as $proposal )
-                            <a href="/admin/detail-proposal/{{$proposal->id}}">
+                            <a href="/admin/detail-proposal/{{$proposal->id}}" class="card-link">
                                 <div id="card">
                                     <div style="height:400px;">
-                                        <iframe style="width:100%; height:100%;" src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&navpanes=0&scrollbar=0" scrolling="no"></iframe>
+                                        <embed src="{{ asset("uploads/".$proposal->file) }}#toolbar=0&navpanes=0&scrollbar=0" scrolling="no">
                                     </div>
                                     <div class="card-desc">
                                         <div class="d-flex justify-content-between">
@@ -56,6 +60,8 @@
             </div>
         </div>
     </section>
+
+
     @include('includes.footer')
 </body>
 </html>

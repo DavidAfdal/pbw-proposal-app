@@ -2,6 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{$title}}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,3 +15,4 @@ href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
 rel="stylesheet"
 />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

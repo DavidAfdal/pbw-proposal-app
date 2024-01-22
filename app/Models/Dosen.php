@@ -23,4 +23,8 @@ class Dosen extends Authenticatable
         return $this->hasOne(Proposal::class, "nidn_peninjau");
     }
 
+    public function proposalUser() {
+        return $this->hasMany(Proposal::class, "nidn_dosen");
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\PeninjauController;
 use App\Http\Controllers\ProposalController;
+use App\Http\Middleware\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::group(['middleware' => 'check.role:dosen'], function () {
     Route::get("/detail-proposal/{id}", [DosenController::class, "details"])->name("detailProposal");
     Route::post('/tambah-anggota-dosen/{id}',[AnggotaController::class, "TambahAnggotaDosen"])->name("tambah.anggotaDosen");
     Route::post('/tambah-anggota-mahasiswa/{id}',[AnggotaController::class, "TambahAnggotaMahasiswa"])->name("tambah.anggotaMahasiswa");
-    Route::post('/tambah-mitra/{id}',[AnggotaController::class, "TambahMitra"])->name("tambah.mitra");
+    Route::post('/tambah-mitra/{id}', [AnggotaController::class, "TambahMitra"])->name("tambah.mitra");
 });
 
 Route::group(['middleware' => 'check.role:peninjau'], function () {
@@ -40,6 +41,8 @@ Route::group(['middleware' => 'check.role:peninjau'], function () {
 Route::group(['middleware' => 'check.role:admin'], function () {
    Route::get("/admin/dashboard", [AdminController::class, "index" ])->name("dashboard");
    Route::get("/admin/detail-proposal/{id}", [AdminController::class, "details" ])->name("detailsAdmin");
+   Route::post('/search-peninjau', [AdminController::class, 'searchPeninjau'])->name('searchPeninjau');
+   Route::post('/tambah-peninjau/{id}', [AdminController::class, 'tambahPeninjau'])->name('tambahPeninjau');
 });
 
 Route::group(['middleware' => 'check.login'], function() {
@@ -48,6 +51,7 @@ Route::group(['middleware' => 'check.login'], function() {
     Route::get("/", [AuthController::class, "login"])->name("login");
     Route::post("/login", [AuthController::class, "handleLogin"])->name("auth.post.login");
 });
+
 
 Route::get('/download/{filename}', [ProposalController::class, "download"])->name('download');
 Route::get("/logout", [AuthController::class, "logout"])->name("auth.logout");
