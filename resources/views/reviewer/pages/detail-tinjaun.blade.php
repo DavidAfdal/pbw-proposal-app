@@ -60,12 +60,13 @@
                        </div>
                        @if(count($proposal->mitra()->get()) > 0 )
                        <div>
-                         <p class="text-1">Mitra :</p>
-                         @foreach($proposal->mitra()->get() as $mitra)
-                         <p class="text-2">{{$mitra->nama}}</p>
-                         @endforeach
-                       </div>
+                        <p class="text-1">Mitra :</p>
+                        @foreach($proposal->mitra()->get() as $mitra)
+                        <p class="text-2">{{$mitra->nama}} - {{$mitra->Pemimpin}}</p>
+                        @endforeach
+                      </div>
                        @endif
+                       @if(count($proposal->anggotaDosen()->get()) > 0 || count($proposal->anggotaMahasiswa()->get()) > 0  )
                        <div>
                          <p class="text-1">Anggota :</p>
                          @foreach($proposal->anggotaDosen()->get() as $anggotaDosen)
@@ -75,12 +76,13 @@
                          <p class="text-2">{{$anggotaMahasiswa->nama}} ({{$anggotaMahasiswa->npm}})</p>
                          @endforeach
                        </div>
+                       @endif
                     </div>
                 </div>
 
                 <div class="komentar">
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="fw-bold nama-peninjau">{{auth()->user()->nama}} (Pengamat)</p>
+                        <p class="fw-bold nama-peninjau">{{auth()->user()->nama}} (Peninjau)</p>
                      <i class="ri-edit-box-line" style="font-size:25px; cursor:pointer" onclick="openModal()"></i>
 
                     </div>

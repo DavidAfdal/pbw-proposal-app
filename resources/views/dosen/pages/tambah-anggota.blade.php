@@ -62,10 +62,10 @@
                 </form>
                 <form action="{{route("tambah.mitra", ["id" => $id])}}" style="display: none;" method="POST" id="formMitra">
                     @csrf
-                  <label for="">Mitra</label>
+                    <label for="">Pemimpin</label>
+                    <input type="text" name="pemimpin" id="">
+                  <label for="">Nama Mitra</label>
                   <input type="text" name="nama" id="">
-                  <label for="">Nama Pemimpin</label>
-                  <input type="text" name="pemimpin" id="">
                   <div class="d-flex justify-content-center gap-4">
                     <button class="btn-tambah" type="submit">
                         Tambah

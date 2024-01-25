@@ -43,15 +43,18 @@ Route::group(['middleware' => 'check.role:admin'], function () {
    Route::get("/admin/detail-proposal/{id}", [AdminController::class, "details" ])->name("detailsAdmin");
    Route::post('/search-peninjau', [AdminController::class, 'searchPeninjau'])->name('searchPeninjau');
    Route::post('/tambah-peninjau/{id}', [AdminController::class, 'tambahPeninjau'])->name('tambahPeninjau');
+   Route::get("/proposal-year", [AdminController::class, "getProposalByYear" ])->name("getProposalByYear");
 });
 
 Route::group(['middleware' => 'check.login'], function() {
     Route::get("/register", [AuthController::class, "register"])->name("register");
     Route::post("/handle-register", [AuthController::class, "handleRegister"])->name("auth.post.register");
-    Route::get("/", [AuthController::class, "login"])->name("login");
+    Route::get("/login", [AuthController::class, "login"])->name("login");
     Route::post("/login", [AuthController::class, "handleLogin"])->name("auth.post.login");
+    Route::get("/", [AuthController::class, "tentangKami"])->name("tentang-kami");
 });
 
 
 Route::get('/download/{filename}', [ProposalController::class, "download"])->name('download');
+Route::get('/download-panduan/{filename}', [AuthController::class, "downloadPanduan"])->name('downloadPanduan');
 Route::get("/logout", [AuthController::class, "logout"])->name("auth.logout");

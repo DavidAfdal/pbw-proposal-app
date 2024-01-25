@@ -14,7 +14,7 @@
             @endif
               <h2 class="">Daftar</h2>
               <div class="auth-box">
-                <h3>Selamat Datang di Klinik Proposal</h3>
+                <h3 style="text-align: center">Selamat Datang di Klinik Proposal</h3>
                 <form action="{{route('auth.post.register')}}" method="post">
                     @csrf
                   <label for="">NIDN :</label>
@@ -38,7 +38,7 @@
                   <button type="submit">
                     Daftar
                   </button>
-                  <a href="/" style="color:white; text-align:center" class="mt-2">
+                  <a href="/login" style="color:white; text-align:center" class="mt-2">
                      Masuk
                 </a>
                 </form>
@@ -47,9 +47,19 @@
             </div>
           </div>
 
-          <div class="info">
+          <div class="info" onclick="handleShowPanduan()">
             <a class="">
               <i class='bx bx-info-circle'></i>
+            </a>
+          </div>
+
+          <div class="panduan" id="panduan">
+            <p class="mb-2">Panduan Pembuatan Proposal</p>
+            <a href={{ route('downloadPanduan', ['filename' => "pedoman.pdf"]) }}>
+                <div class="file-panduan mb-4">
+                    <i class="ri-file-line"></i>
+                    <p>Panduan pembuatan Proposal.pdf</p>
+                </div>
             </a>
           </div>
     </main>

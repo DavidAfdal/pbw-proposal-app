@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function tentangKami()
+    {
+        return view('auth.pages.tentang-kami');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +43,7 @@ class AuthController extends Controller
             "password" => Hash::make($request->password),
         ]);
 
-        return redirect("/")->with("succes", 'You have signed-in');
+        return redirect("/login")->with("succes", 'You have signed-in');
     }
 
     public function login() {
@@ -89,69 +93,16 @@ class AuthController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function downloadPanduan($filename)
     {
+        $file_path = public_path("panduan/".$filename);
 
+        if (file_exists($file_path)) {
+            return response()->download($file_path, $filename);
+        } else {
+            abort(404, 'File not found');
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

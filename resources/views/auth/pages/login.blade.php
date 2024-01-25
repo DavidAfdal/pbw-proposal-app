@@ -14,7 +14,7 @@
                     {{ session()->get('errMsg') }}
                 </div>
             @endif
-                <h3>Selamat Datang di Klinik Proposal</h3>
+                <h3 style="text-align: center">Selamat Datang di Klinik Proposal</h3>
 
                 <form action="{{route("auth.post.login")}}" method="post">
                     @csrf
@@ -44,13 +44,24 @@
             </div>
           </div>
 
-          <div class="info">
+          <div class="info" onclick="handleShowPanduan()">
             <a class="">
               <i class='bx bx-info-circle'></i>
             </a>
           </div>
+
+          <div class="panduan" id="panduan">
+            <p class="mb-2">Panduan Pembuatan Proposal</p>
+            <a href={{ route("downloadPanduan", ['filename' => "pedoman.pdf"]) }}>
+                <div class="file-panduan mb-4">
+                    <i class="ri-file-line"></i>
+                    <p>Panduan pembuatan Proposal.pdf</p>
+                </div>
+            </a>
+          </div>
     </main>
     <script src="{{ asset('js/handlePassword.js') }}"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

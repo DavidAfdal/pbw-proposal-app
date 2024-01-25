@@ -66,6 +66,7 @@
                          @endforeach
                        </div>
                        @endif
+                       @if(count($proposal->anggotaDosen()->get()) > 0 || count($proposal->anggotaMahasiswa()->get()) > 0  )
                        <div>
                          <p class="text-1">Anggota :</p>
                          @foreach($proposal->anggotaDosen()->get() as $anggotaDosen)
@@ -75,6 +76,7 @@
                          <p class="text-2">{{$anggotaMahasiswa->nama}} ({{$anggotaMahasiswa->npm}})</p>
                          @endforeach
                        </div>
+                       @endif
                        @if ($proposal->nidn_peninjau != null)
                        <div>
                          <p class="text-1">Peninjau :</p>
@@ -90,7 +92,7 @@
                 </div>
                 @if ($proposal->nidn_peninjau == null)
                 <div class="d-flex justify-content-end">
-                    <button type="button" onclick="openModal()">Tambah Pengamat</button>
+                    <button type="button" onclick="openModal()">Tambah Peninjau</button>
                 </div>
                 @endif
 

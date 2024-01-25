@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="card-desc">
                                     <div class="d-flex justify-content-between">
-                                        <p>{{$proposal->judul}}</p>
+                                        <p class="judul">{{$proposal->judul}}</p>
                                         <div class="d-flex gap-2 align-items-center">
                                             @if ($proposal->status == "Sedang Ditinjau")
                                             <i class="ri-hourglass-fill" style="font-size:20px"></i>
